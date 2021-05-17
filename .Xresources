@@ -1,0 +1,103 @@
+!! PaperColor Theme
+!*.foreground: #4D4D4C
+!*.background: #EEEEEE
+!! black
+!*color0: #EDEDED
+!*color8: #969694
+!! red
+!*color1: #D7005F
+!*color9: #D7005F
+!! green
+!*color2: #718C00
+!*color10: #718C00
+!! yellow / orange
+!*color3: #D75F00
+!*color11: #D75F00
+!! blue
+!*color4: #4271AE
+!*color12: #4271AE
+!! magenta
+!*color5: #8959A8
+!*color13: #8959A8
+!! cyan
+!*color6: #3E999F
+!*color14: #3E999F
+!! white
+!!*.color7: #F5F5F5
+!!*.color15: #2D2D2C
+!! white
+!*color7: #4D4D4C
+!!*.color15: #F5F5F5
+!*color15: #A8A8A8
+
+! Personnal theme
+! special
+*.foreground:   #1d1f21
+*.background:   #e8e8e7
+*.cursorColor:  #1d1f21
+
+! black
+*.color0:       #282a2e
+*.color8:       #373b41
+
+! red
+*.color1:       #a54242
+*.color9:       #cc6666
+
+! green
+*.color2:       #8c9440
+*.color10:      #b5bd68
+
+! yellow
+*.color3:       #de935f
+*.color11:      #f0c674
+
+! blue
+*.color4:       #5f819d
+*.color12:      #81a2be
+
+! magenta
+*.color5:       #85678f
+*.color13:      #b294bb
+
+! cyan
+*.color6:       #5e8d87
+*.color14:      #8abeb7
+
+! white
+*.color7:       #707880
+*.color15:      #c5c8c6
+
+
+!URxvt*inheritPixmap: true
+!URxvt*transparent: true
+! URxvt*shading: 0 to 99 darkens, 101 to 200 lightens
+!URxvt*shading: 190
+
+!URxvt.font: xft:Source Code Pro for Powerline:pixelsize=13:Regular
+*.font: xft:Hack:pixelsize=11
+!URxvt*boldFont:             xft:Droid Sans Mono Slashed for Powerline:pixelsize=11:antialias=true:hinting=true:autohint=true
+!URxvt*italicFont:           xft:Droid Sans Mono Slashed for Powerline:pixelsize=11:antialias=true:autohint=true:hinting=true
+!URxvt*bolditalicFont:       xft:Droid Sans Mono slashed for Powerline:pixelsize=11:antialias=true:autohint=true:hinting=true
+URxvt.perl-ext-common: default,matcher,resize-font
+
+URxvt.url-launcher: /usr/bin/xdg-open
+!URxvt.url-launcher: /work1/bmugnier/firefox/firefox
+URxvt.matcher.button: 1
+URxvt.keysym.C-Delete:    perl:matcher:last
+URxvt.keysym.M-Delete:    perl:matcher:list
+URxvt.url-select.launcher: /usr/bin/xdg-open
+!URxvt.url-select.launcher: /work1/bmugnier/firefox/firefox
+URxvt.url-select.underline: true
+
+URxvt.scrollBar: false
+URxvt.urgentOnBell: true
+URxvt.bell-command: canberra-gtk-play -i bell -V 1.0
+
+
+!xterm stuff
+XTerm.termName: xterm-256color
+XTerm.vt100.saveLines: 4096
+XTerm.vt100.bellIsUrgent: true
+XTerm.vt100.metaSendsEscape: true
+*VT100*translations: #override Shift <Btn1Up>: exec-formatted("firefox '%t'", PRIMARY)
