@@ -1,0 +1,126 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        interval = 5
+	color_good = "#a3be8c"
+	color_degraded = "#d08770"
+	color_bad = "#bf616a"
+}
+
+
+order += "spotify"
+order += "path_exists skadi"
+order += "volume master"
+order += "volume_status mic"
+#order += "group lm_sensors"
+order += "lm_sensors cpu"
+order += "lm_sensors gpu"
+order += "cpu_usage"
+#order += "group disks"
+#order += "disk /"
+#order += "disk /data"
+order += "memory"
+order += "load"
+order += "tztime local"
+
+
+path_exists "skadi" {
+    path = "/tmp/skadi"
+    format = " Skadi"
+    format_down = ""
+}
+
+tztime local {
+	format = " %Y-%m-%d  %H:%M:%S"
+}
+
+cpu_usage {
+	format = " %usage"
+}
+
+load {
+	separator_block_width = 15
+        format = " %1min"
+}
+
+group disks {
+	cycle = 120
+	fixed_width = true
+	disk "/" {
+		format = " Sys %avail"
+	}
+	disk "/data" {
+		format = " Data %avail"
+	}
+}
+
+memory {
+        format = " %used"
+        threshold_degraded = "10%"
+        format_degraded = "Low RAM %used used"
+}
+
+volume master {
+        format = " %volume"
+}
+
+read_file uptime {
+        path = "/proc/uptime"
+}
+
+#py3status stuff
+
+spotify {
+	button_play_pause = 1
+	button_next = 4
+	button_previous = 5
+	format = " {title} - {artist}"
+	format_down = ""
+	color_playing = "#FFFFFF"
+	color_paused = "#5c5c5c"
+}
+
+cpu_temperature 0 {
+        format = "T: %degrees °C"
+        path = "/sys/devices/platform/coretemp.0/temp1_input"
+}
+
+volume_status mic {
+	#format = ' {percentage}%'
+	format = ''
+	format_muted = ' '
+	button_mute = 1
+	is_input = true
+	cache_timeout = 1
+	thresholds = [(0, 'bad'), (10, 'degraded'), (20, 'good')]
+	button_down = None
+	button_up = None
+}
+
+#group lm_sensors {
+#	cycle = 30
+#	fixed_width = true
+	lm_sensors cpu {
+		separator = false
+		separator_block_width = 6
+		format = " {format_chip}"
+		format_chip = "CPU {format_sensor}°"
+		chips = [nct6687-isa-0a20]
+		format_sensor = "{input}"
+		sensors = ['amd_tsi*']
+	}
+	lm_sensors gpu {
+		format = "{format_chip}"
+		format_chip = "GPU {format_sensor}°"
+		chips = [amdgpu-pci-2d00]
+		format_sensor = "{input}"
+		sensors = [edge]
+	}
+#}
