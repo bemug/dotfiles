@@ -311,10 +311,12 @@ workspace 10 output HDMI-A-1
 bindsym --release Print exec GRIM_DEFAULT_DIR=Screenshots grim -g "$(slurp)" && notify-send 'Screenshot taken'
 bindsym --release Shift+Print exec GRIM_DEFAULT_DIR=Screenshots grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') && notify-send 'Screenshot taken'
 # Dunst
-exec --no-startup-id dunst
 bindsym Control+Space exec dunstctl close
 bindsym Control+Shift+Space exec dunstctl close-all
 bindsym Control+twosuperior exec dunstctl history-pop
+# Startup programs
+exec --no-startup-id dunst
+exec --no-startup-id steam -silent
 
 
 include /etc/sway/config.d/*
