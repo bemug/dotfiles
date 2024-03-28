@@ -47,7 +47,10 @@ set $menu dmenu_path | wmenu -b | xargs swaymsg exec --
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /home/bemug/dotfiles/wallpaper.png center $background
+# Color as background
+#output * bg $background solid_color
+# Custom wallpaper
+output * bg ${HOME}/dotfiles/wallpaper.png fill $background
 #
 # Example configuration:
 #
@@ -270,7 +273,7 @@ bar {
     colors {
         statusline $text
         background $transparent
-        separator  $background
+        separator  $transparent
 
         focused_workspace  $primary $primary $text
         active_workspace   $secondary $secondary $text
@@ -292,8 +295,6 @@ default_border pixel 3
 # Gaps
 gaps inner 3
 smart_gaps on
-# Color as background
-#output * bg $background solid_color
 #Toggle microphone mute
 bindsym XF86AudioMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 # Volume keys
