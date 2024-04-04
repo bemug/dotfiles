@@ -93,13 +93,12 @@ cpu_temperature 0 {
 }
 
 volume_status mic {
-	#format = ' {percentage}%'
-	format = ''
+	format = ' {percentage}%'
 	format_muted = ' '
 	button_mute = 1
 	is_input = true
 	cache_timeout = 1
-	thresholds = [(0, 'bad'), (10, 'degraded'), (20, 'good')]
+	thresholds = [(0, '')]
 	button_down = None
 	button_up = None
 }
