@@ -17,6 +17,7 @@ general {
 
 order += "spotify"
 order += "path_exists skadi"
+order += "path_exists gamecube"
 order += "volume master"
 order += "volume_status mic"
 #order += "group lm_sensors"
@@ -32,8 +33,14 @@ order += "tztime local"
 
 
 path_exists "skadi" {
-    path = "/tmp/skadi"
+    path = "/tmp/skadi.toggle"
     format = " Skadi"
+    format_down = ""
+}
+
+path_exists "gamecube" {
+    path = "/tmp/wii-u-gc-adapter.toggle"
+    format = " Gamecube"
     format_down = ""
 }
 
