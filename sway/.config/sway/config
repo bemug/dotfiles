@@ -293,7 +293,7 @@ font pango:monospace 9, FontAwesome 9
 # Remove title bars
 default_border pixel 3
 # Gaps
-gaps inner 3
+#gaps inner 3
 smart_gaps on
 #Toggle microphone mute
 bindsym XF86AudioMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
