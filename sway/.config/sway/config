@@ -308,6 +308,8 @@ bindsym $mod+Control+space exec "dbus-send --print-reply --dest=org.mpris.MediaP
 bindsym XF86Calculator exec toggle wii-u-gc-adapter
 # Second screen always starts with workspace 10
 workspace 10 output HDMI-A-1
+# Highlight Xwayland window
+for_window [shell="xwayland"] title_format "XWayland : %title"
 # Screenshots
 bindsym --release Print exec GRIM_DEFAULT_DIR=Screenshots grim -g "$(slurp)" && notify-send 'Screenshot taken'
 bindsym --release Shift+Print exec GRIM_DEFAULT_DIR=Screenshots grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') && notify-send 'Screenshot taken'
