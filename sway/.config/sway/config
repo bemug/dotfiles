@@ -305,6 +305,8 @@ bindsym $mod+Control+p exec "dbus-send --print-reply --dest=org.mpris.MediaPlaye
 bindsym $mod+Control+n exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 bindsym $mod+Control+space exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 # Gamecube userspace driver
+# This should not be needed as SDL2 now as support for the gamecube controller
+# But some old game may not have it, or may have issues with SDL2 inputs
 bindsym XF86Calculator exec toggle wii-u-gc-adapter
 # Second screen always starts with workspace 10
 workspace 10 output HDMI-A-1

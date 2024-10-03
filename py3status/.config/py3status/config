@@ -40,7 +40,7 @@ path_exists "skadi" {
 
 path_exists "gamecube" {
     path = "/tmp/wii-u-gc-adapter.toggle"
-    format = " Gamecube"
+    format = " GC"
     format_down = ""
 }
 
