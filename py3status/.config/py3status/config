@@ -18,6 +18,7 @@ general {
 order += "spotify"
 order += "path_exists skadi"
 order += "path_exists gamecube"
+order += "external_script"
 order += "volume master"
 order += "volume_status mic"
 #order += "group lm_sensors"
@@ -75,7 +76,7 @@ memory {
 }
 
 volume master {
-        format = " %volume"
+        format = "%volume"
 }
 
 read_file uptime {
@@ -130,3 +131,9 @@ volume_status mic {
 		sensors = [edge]
 	}
 #}
+
+external_script {
+	script_path = "if $(pactl get-default-sink | grep -q hdmi); then echo ; else echo  ; fi"
+	separator_block_width = 4
+	cache_timeout = 1
+}
