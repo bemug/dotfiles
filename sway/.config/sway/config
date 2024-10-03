@@ -89,9 +89,10 @@ output HDMI-A-1 transform 90 pos 1920 0
 # Read `man 5 sway-input` for more information about this section.
 
 input "type:keyboard" {
-    xkb_layout fr
+    xkb_layout fr,us
     xkb_numlock enabled
 }
+bindsym $mod+BackSpace input "type:keyboard" xkb_switch_layout next
 
 input "type:pointer" {
     accel_profile "flat" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
