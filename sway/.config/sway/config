@@ -289,7 +289,6 @@ bar {
 #
 # Custom
 #
-set $refresh py3-cmd refresh volume_status external_script
 # Bigger font + icons
 font pango:monospace 9, FontAwesome 9
 # Remove title bars
@@ -298,15 +297,16 @@ default_border pixel 3
 #gaps inner 3
 smart_gaps on
 #Toggle microphone mute
-bindsym XF86AudioMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh
+bindsym XF86AudioMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && py3-cmd refresh volume
 # Volume keys
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && py3-cmd refresh volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && py3-cmd refresh volume
 # Spotify
-bindsym $mod+Control+p exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
-bindsym $mod+Control+n exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
-bindsym $mod+Control+space exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
-bindsym XF86Calculator exec pactl set-default-sink $(pactl list short sinks | grep -v $(pactl get-default-sink) | cut -f 1) && $refresh
+bindsym $mod+Control+p exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous && py3-cmd refresh spotify
+bindsym $mod+Control+n exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next && py3-cmd refresh spotify
+bindsym $mod+Control+space exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause && py3-cmd refresh spotify
+#Toggle sink
+bindsym XF86Calculator exec pactl set-default-sink $(pactl list short sinks | grep -v $(pactl get-default-sink) | cut -f 1) && py3-cmd refresh external_script
 # Second screen always starts with workspace 10
 workspace 10 output HDMI-A-1
 # Highlight Xwayland window
