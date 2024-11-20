@@ -98,7 +98,6 @@ volume_status mic {
 	format_muted = ' '
 	button_mute = 1
 	is_input = true
-	cache_timeout = 1
 	thresholds = [(0, '')]
 	button_down = None
 	button_up = None
@@ -128,5 +127,4 @@ volume_status mic {
 external_script {
 	script_path = "if $(pactl get-default-sink | grep -q hdmi); then echo ; else echo  ; fi"
 	separator_block_width = 4
-	cache_timeout = 1
 }
