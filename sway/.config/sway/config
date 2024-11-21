@@ -50,7 +50,7 @@ set $menu dmenu_path | wmenu -b -S 5e81ac | xargs swaymsg exec --
 # Color as background
 #output * bg $background solid_color
 # Custom wallpaper
-output * bg ${HOME}/dotfiles/wallpaper.png fill $background
+output * bg ${HOME}/dotfiles/wallpaper.jpg fill $background
 #
 # Example configuration:
 #
