@@ -265,25 +265,7 @@ client.background       $text
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    #status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-    status_command py3status
-
-    colors {
-        statusline $text
-        background $transparent
-        separator  $transparent
-
-        focused_workspace  $primary $primary $text
-        active_workspace   $secondary $secondary $text
-        inactive_workspace $transparent $transparent #5c5c5c
-        urgent_workspace   $urgent $urgent $text
-        binding_mode       $urgent $urgent $text
-        #i3 inactive workspace default
-        #inactive_workspace #333333 #222222 #888888
-    }
+    swaybar_command waybar
 }
 
 #
@@ -297,16 +279,16 @@ default_border pixel 3
 #gaps inner 3
 smart_gaps on
 #Toggle microphone mute
-bindsym XF86AudioMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && py3-cmd refresh volume_status
+bindsym XF86AudioMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 # Volume keys
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && py3-cmd refresh "volume master"
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && py3-cmd refresh "volume master"
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1%
 #Toggle sink
-bindsym XF86Calculator exec pactl set-default-sink $(pactl list short sinks | grep -v $(pactl get-default-sink) | cut -f 1) && py3-cmd refresh "volume master" external_script
+bindsym XF86Calculator exec pactl set-default-sink $(pactl list short sinks | grep -v $(pactl get-default-sink) | cut -f 1)
 # Spotify
-bindsym $mod+Control+p exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous && py3-cmd refresh spotify
-bindsym $mod+Control+n exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next && py3-cmd refresh spotify
-bindsym $mod+Control+space exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause && py3-cmd refresh spotify
+bindsym $mod+Control+p exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+bindsym $mod+Control+n exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+bindsym $mod+Control+space exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 # Second screen always starts with workspace 10
 workspace 10 output HDMI-A-1
 # Highlight Xwayland window
