@@ -299,10 +299,10 @@ smart_gaps on
 #Toggle microphone mute
 bindsym XF86AudioMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && py3-cmd refresh volume_status
 # Volume keys
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && py3-cmd refresh volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && py3-cmd refresh volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && py3-cmd refresh "volume master"
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && py3-cmd refresh "volume master"
 #Toggle sink
-bindsym XF86Calculator exec pactl set-default-sink $(pactl list short sinks | grep -v $(pactl get-default-sink) | cut -f 1) && py3-cmd refresh external_script volume
+bindsym XF86Calculator exec pactl set-default-sink $(pactl list short sinks | grep -v $(pactl get-default-sink) | cut -f 1) && py3-cmd refresh "volume master" external_script
 # Spotify
 bindsym $mod+Control+p exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous && py3-cmd refresh spotify
 bindsym $mod+Control+n exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next && py3-cmd refresh spotify
