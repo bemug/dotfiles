@@ -125,6 +125,6 @@ volume_status mic {
 #}
 
 external_script {
-	script_path = "if $(pactl get-default-sink | grep -q hdmi); then echo ; else echo  ; fi"
+	script_path = "if $(pactl get-default-sink | grep -q hdmi); then echo ; elif $(pactl get-default-sink | grep -q analog-stereo); then echo  ; else echo ?; fi"
 	separator_block_width = 4
 }
