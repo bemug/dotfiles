@@ -322,5 +322,7 @@ bindsym Control+twosuperior exec dunstctl history-pop
 exec --no-startup-id dunst
 exec --no-startup-id steam -silent
 
+seat * hide_cursor 8000
+seat * hide_cursor when-typing disable
 
 include /etc/sway/config.d/*
