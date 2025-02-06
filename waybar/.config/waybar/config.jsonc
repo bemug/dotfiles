@@ -53,6 +53,9 @@
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
+    "sway/window": {
+        "max-length": 50
+    },
     "tray": {
         // "icon-size": 21,
         "spacing": 10
