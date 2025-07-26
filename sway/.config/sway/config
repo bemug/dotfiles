@@ -95,6 +95,7 @@ output * max_render_time off
 input "type:keyboard" {
     xkb_layout fr,us
     xkb_numlock enabled
+    xkb_options caps:super
 }
 bindsym $mod+BackSpace input "type:keyboard" xkb_switch_layout next
 
